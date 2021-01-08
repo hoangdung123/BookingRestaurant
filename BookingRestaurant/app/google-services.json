@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "549553634809",
+    "firebase_url": "https://bookingrestua-default-rtdb.firebaseio.com",
+    "project_id": "bookingrestua",
+    "storage_bucket": "bookingrestua.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549553634809:android:745b4762e487931ced9128",
+        "android_client_info": {
+          "package_name": "com.example.bookingrestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549553634809-8b0i1ggrk03jc40otqanftlo44au4doc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB32laJilWFndRkJbfn2KSeUi6a777F5as"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549553634809-8b0i1ggrk03jc40otqanftlo44au4doc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
