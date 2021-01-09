@@ -7,12 +7,227 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="675dp">
 
-    <Button
-        android:id="@+id/btnNavigate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@drawable/button_bg"
-        android:text="Login" />
+        <ImageView
+            android:id="@+id/menu_imgV"
+            android:layout_width="411dp"
+            android:layout_height="185dp"
+            android:background="#ffdd59"
+            tools:ignore="ContentDescription,MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/text_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="RoraFood"
+            android:textColor="#333333"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_imgV"
+            app:layout_constraintEnd_toStartOf="@+id/notification"
+            app:layout_constraintHorizontal_bias="0.532"
+            app:layout_constraintStart_toEndOf="@+id/menu_bar"
+            app:layout_constraintTop_toTopOf="@+id/menu_imgV"
+            app:layout_constraintVertical_bias="0.096"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/menu_bar"
+            android:layout_width="30dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_imgV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_menu"
+            tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="44dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_imgV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_baseline_notifications_none_24"
+            tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_imgV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                tools:ignore="RtlSymmetry">
+
+                <Button
+                    android:id="@+id/btn01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_pg"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:shadowColor="@color/black"
+                    android:text="Đồ ăn nhanh"
+                    android:textColor="#333333"
+                    app:backgroundTint="@color/white"
+                    tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded" />
+
+                <Button
+                    android:id="@+id/btn02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_pg"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Trà sữa"
+                    android:textColor="#333333"
+                    app:backgroundTint="@color/white"
+                    tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded" />
+
+                <Button
+                    android:id="@+id/btn03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_pg"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Cơm phần"
+                    android:textColor="#333333"
+                    app:backgroundTint="@color/white"
+                    tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded" />
+
+                <Button
+                    android:id="@+id/btn04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_pg"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Bún phở"
+                    android:textColor="#333333"
+                    app:backgroundTint="@color/white"
+                    tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_imgV">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="172dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/chicken_burger"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Burger Gà"
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:text="32.000 VNĐ"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/input_bg"
+                    android:text="Thêm"
+                    app:backgroundTint="@android:color/holo_orange_dark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    tools:ignore="HardcodedText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/framelayout_container">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            android:foreground="?attr/selectableItemBackground"
+            app:itemBackground="@color/Yellow"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:menu="@menu/navigation"
+            tools:ignore="MissingConstraints" />
+    </FrameLayout>
+
 </RelativeLayout>
