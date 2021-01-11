@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingRestaurant"
         tools:ignore="AllowBackup">
-        <activity android:name=".soup"></activity>
+        <activity android:name=".soup" />
         <activity android:name=".rice" />
         <activity android:name=".milktea" />
         <activity android:name=".fastfood" />
