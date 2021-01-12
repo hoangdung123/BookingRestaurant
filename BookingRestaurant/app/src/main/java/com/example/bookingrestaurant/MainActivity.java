@@ -6,13 +6,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
+
+import FoodFirebaseHelper.FoodFirebase;
+import Model.Food;
+import RecyclerView.FoodConfig;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,8 +51,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
-
-
+        navigationView.setCheckedItem(R.id.nav_home);
+        RecyclerView listRecycler = (RecyclerView) findViewById(R.id.RecyclerView);
+        new FoodFirebase().getList(new FoodFirebase.DataStatus() {
+            @Override
+            public void DataLoaded(List<Food> foods, List<String> key) {
+                new FoodConfig().setConfig(listRecycler, MainActivity.this, foods, key);
+            }
+        });
     }
 
     @Override
@@ -59,6 +74,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.nav_home:
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                break;
+            case R.id.nav_reg:
+                startActivity(new Intent(getApplicationContext(), Reg_users.class));
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return false;
     }
 }
