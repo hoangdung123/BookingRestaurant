@@ -1,6 +1,7 @@
 package RecyclerView;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookingrestaurant.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class FoodConfig {
         public void bind(Food food, String key){
             tvName.setText((food.getName()));
             tvPrice.setText(String.valueOf(food.getPrice()));
+            Picasso.with(context).load(food.getImageUrl()).into(imgView);
             this.key = key;
         }
     }
