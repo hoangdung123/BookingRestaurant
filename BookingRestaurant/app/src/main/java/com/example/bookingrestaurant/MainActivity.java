@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -28,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-
     //MenuItem nav_reg;
 
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         new FoodFirebase().getList(new FoodFirebase.DataStatus() {
             @Override
             public void DataLoaded(List<Food> foods, List<String> key) {
+                //findViewById(R.id.progressBar).setVisibility(View.GONE);
                 new FoodConfig().setConfig(listRecycler, MainActivity.this, foods, key);
             }
         });
