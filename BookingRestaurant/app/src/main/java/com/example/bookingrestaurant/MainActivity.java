@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    Button btnFastFood;
     //MenuItem nav_reg;
 
 
@@ -37,31 +39,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawlayout);
-        navigationView =(NavigationView)findViewById(R.id.nav_view);
-        toolbar =findViewById(R.id.toolbar);
-
-        //nav_reg = findViewById(R.id.nav_reg);
-
+        AnhXa();
 
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close );
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+
         RecyclerView listRecycler = (RecyclerView) findViewById(R.id.RecyclerView);
         new FoodFirebase().getList(new FoodFirebase.DataStatus() {
             @Override
             public void DataLoaded(List<Food> foods, List<String> key) {
-                //findViewById(R.id.progressBar).setVisibility(View.GONE);
+                findViewById(R.id.progressBar).setVisibility(View.GONE);
                 new FoodConfig().setConfig(listRecycler, MainActivity.this, foods, key);
             }
         });
+
+        btnFastFood.setOnClickListener(fastFood);
+
     }
+
+    private void AnhXa(){
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawlayout);
+        navigationView =(NavigationView)findViewById(R.id.nav_view);
+        toolbar =findViewById(R.id.toolbar);
+        btnFastFood = findViewById(R.id.btn_fastfood);
+    }
+    private View.OnClickListener fastFood = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(getApplicationContext(), FastFoodActivity.class));
+        }
+    };
 
     @Override
     public void onBackPressed() {
@@ -80,8 +93,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home:
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 break;
-            case R.id.nav_reg:
+            /*case R.id.nav_reg:
                 startActivity(new Intent(getApplicationContext(), Reg_users.class));
+                break;*/
+            case R.id.nav_cart:
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

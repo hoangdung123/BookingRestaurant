@@ -16,13 +16,12 @@
         android:id="@+id/nav_view"
         app:headerLayout="@layout/header"
         app:menu="@menu/navigation"
-        android:layout_gravity="start">
-    </com.google.android.material.navigation.NavigationView>
+        android:layout_gravity="start"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
         <androidx.appcompat.widget.Toolbar
             tools:ignore="MissingConstraints"
             android:background="#00008577"
@@ -40,12 +39,12 @@
 
         <ImageView
             android:id="@+id/menu_imgV"
-            android:layout_width="411dp"
+            android:layout_width="match_parent"
             android:layout_height="185dp"
             android:background="#ffdd59"
-            tools:ignore="ContentDescription,MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/rora_text"
@@ -183,20 +182,31 @@
         app:layout_constraintTop_toBottomOf="@+id/menu_imgV"
         tools:ignore="HardcodedText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="420dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu_imgV"
-        tools:ignore="MissingConstraints">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/RecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/RecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/RecyclerView"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_popular"
+            tools:ignore="MissingConstraints">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

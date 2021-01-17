@@ -17,26 +17,26 @@ import java.util.List;
 
 import Model.Food;
 
-public class FoodConfig {
+public class FastFoodConfig {
     private Context context;
-    private FoodAdapter foodAdapter;
+    private FastFoodAdapter fastFoodAdapter;
 
     public void setConfig(RecyclerView recyclerView, Context context, List<Food> foods, List<String> keys){
         this.context = context;
-        foodAdapter = new FoodAdapter(foods, keys);
+        fastFoodAdapter = new FastFoodAdapter(foods, keys);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(foodAdapter);
+        recyclerView.setAdapter(fastFoodAdapter);
     }
-    class FoodViewHolder extends RecyclerView.ViewHolder{
+    class FastFoodViewHolder extends RecyclerView.ViewHolder{
         ImageView imgView;
         TextView tvName, tvPrice;
         private String key;
 
-        public FoodViewHolder(ViewGroup parent){
+        public FastFoodViewHolder(ViewGroup parent){
             super(LayoutInflater.from(context).inflate(R.layout.list_item, parent, false));
-             imgView = (ImageView) itemView.findViewById(R.id.imgFood);
-             tvName = (TextView) itemView.findViewById(R.id.textName);
-             tvPrice = (TextView) itemView.findViewById(R.id.textPrice);
+            imgView = (ImageView) itemView.findViewById(R.id.imgFood);
+            tvName = (TextView) itemView.findViewById(R.id.textName);
+            tvPrice = (TextView) itemView.findViewById(R.id.textPrice);
         }
 
         public void bind(Food food, String key){
@@ -47,28 +47,29 @@ public class FoodConfig {
         }
     }
 
-    class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder>{
-        private List<Food> foodList;
+    class FastFoodAdapter extends RecyclerView.Adapter<FastFoodViewHolder>{
+        private List<Food> listFastFood;
         private List<String> keys;
 
-        public FoodAdapter(List<Food> foodList, List<String> keys){
-            this.foodList = foodList;
+        public FastFoodAdapter(List<Food> listFastFood, List<String> keys) {
+            this.listFastFood = listFastFood;
             this.keys = keys;
         }
+
         @NonNull
         @Override
-        public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new FoodViewHolder(parent);
+        public FastFoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new FastFoodViewHolder(parent);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-            holder.bind(foodList.get(position), keys.get(position));
+        public void onBindViewHolder(@NonNull FastFoodViewHolder holder, int position) {
+            holder.bind(listFastFood.get(position), keys.get(position));
         }
 
         @Override
         public int getItemCount() {
-            return foodList.size();
+            return listFastFood.size();
         }
     }
 }

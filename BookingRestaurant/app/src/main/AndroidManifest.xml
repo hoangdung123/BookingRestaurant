@@ -11,12 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingRestaurant"
         tools:ignore="AllowBackup">
-        <activity android:name=".soup" />
-        <activity android:name=".rice" />
-        <activity android:name=".milktea" />
-        <activity android:name=".fastfood" />
-        <activity android:name=".Reg_users" />
-        <activity android:name=".InforActivity" />
+        <activity android:name=".CartActivity"/>
+        <activity android:name=".FastFoodActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

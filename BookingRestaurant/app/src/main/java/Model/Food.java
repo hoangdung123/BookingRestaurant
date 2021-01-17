@@ -5,12 +5,14 @@ public class Food {
     private String imageUrl;
     private long price;
     private float rating;
+    private int categoryId;
 
-    public Food(String name, String imageUrl, long price, float rating) {
+    public Food(String name, String imageUrl, long price, float rating, int categoryId) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.price = price;
         this.rating = rating;
+        this.categoryId = categoryId;
     }
 
     public Food() {
@@ -46,5 +48,13 @@ public class Food {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
