@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import Model.Customer;
+import Model.Food;
 import Model.Order;
 
 public class CartFirebase {
@@ -26,9 +27,10 @@ public class CartFirebase {
     }
     public CartFirebase(){
         mFirebaseFirestore = FirebaseFirestore.getInstance();
+        mDoc = mFirebaseFirestore.document("orderFood/order");
     }
 
-    public void getCart(Customer customer, final DataStatus dataStatus){
+    public void getCart(Customer customer, Food food, final DataStatus dataStatus){
         String customerPhone = customer.getPhoneNumber();
         mDoc.collection(collection)
                 .whereEqualTo(customerPhone, true)
@@ -37,6 +39,7 @@ public class CartFirebase {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isComplete()){
+
                             dataStatus.DataLoaded();
                         }
                     }

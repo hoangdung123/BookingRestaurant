@@ -13,12 +13,15 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -27,7 +30,7 @@ import Model.Food;
 import RecyclerView.FoodConfig;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    private FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -40,15 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AnhXa();
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close );
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.bringToFront();
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_home);
+        createMenu();
 
         RecyclerView listRecycler = (RecyclerView) findViewById(R.id.RecyclerView);
         new FoodFirebase().getList(new FoodFirebase.DataStatus() {
@@ -60,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         btnFastFood.setOnClickListener(fastFood);
+        hideMenu();
 
     }
 
@@ -69,6 +65,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar =findViewById(R.id.toolbar);
         btnFastFood = findViewById(R.id.btn_fastfood);
     }
+
+    private void createMenu(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close );
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+    }
+
     private View.OnClickListener fastFood = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -99,8 +107,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_cart:
                 startActivity(new Intent(getApplicationContext(), CartActivity.class));
                 break;
+            case R.id.nav_reg:
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    private void hideMenu(){
+        Menu menu = navigationView.getMenu();
+        if(mCurrentUser == null){
+            menu.findItem(R.id.nav_profile).setVisible(false);
+        }
     }
 }

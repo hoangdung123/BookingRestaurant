@@ -1,18 +1,20 @@
 package FoodFirebaseHelper;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import Model.Customer;
 
 public class CustomerFirebase {
-    private FirebaseFirestore mFirebase;
-    private DocumentReference mDocument;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mCurrentUser;
 
     public CustomerFirebase(){
-        mFirebase = FirebaseFirestore.getInstance();
-        mDocument = mFirebase.document("orderFood/customers");
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
     }
 
     public interface DataStatus{
@@ -22,14 +24,11 @@ public class CustomerFirebase {
         void DataDeleted();
     }
 
+    public void getCurrentCustomer(final DataStatus dataStatus){
+
+    }
+
     public void addCustomer(Customer customer, final DataStatus dataStatus){
-        mDocument.collection("customer")
-                .add(customer)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        dataStatus.DataInserted();
-                    }
-                });
+
     }
 }
