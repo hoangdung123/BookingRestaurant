@@ -21,6 +21,11 @@ public class RiceFirebase {
         void DataLoaded(List<Food> foods, List<String> key);
     }
 
+    public RiceFirebase(){
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference("foods");
+    }
+
     public void getList(DataStatus dataStatus){
         mReference.addValueEventListener(new ValueEventListener() {
             @Override

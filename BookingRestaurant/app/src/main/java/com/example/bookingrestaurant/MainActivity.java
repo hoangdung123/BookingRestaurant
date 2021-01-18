@@ -30,11 +30,13 @@ import Model.Food;
 import RecyclerView.FoodConfig;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseUser mCurrentUser = mAuth.getCurrentUser();
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button btnFastFood;
+    Button btnFastFood, btnMilktea, btnRice, btnSoup;
     //MenuItem nav_reg;
 
 
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         btnFastFood.setOnClickListener(fastFood);
+        btnSoup.setOnClickListener(soup);
+        btnMilktea.setOnClickListener(milktea);
+        btnRice.setOnClickListener(rice);
         hideMenu();
 
     }
@@ -64,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView =(NavigationView)findViewById(R.id.nav_view);
         toolbar =findViewById(R.id.toolbar);
         btnFastFood = findViewById(R.id.btn_fastfood);
+        btnMilktea = (Button) findViewById(R.id.btn_milktea);
+        btnRice = (Button) findViewById(R.id.btn_rice);
+        btnSoup = (Button) findViewById(R.id.btn_soup);
     }
 
     private void createMenu(){
@@ -81,6 +89,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onClick(View v) {
             startActivity(new Intent(getApplicationContext(), FastFoodActivity.class));
+        }
+    };
+    private View.OnClickListener milktea = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(MainActivity.this, MilkteaActivity.class));
+        }
+    };
+
+    private View.OnClickListener rice = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(MainActivity.this, RiceActivity.class));
+        }
+    };
+
+    private View.OnClickListener soup = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(MainActivity.this, SoupActivity.class));
         }
     };
 
@@ -101,14 +129,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home:
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 break;
-            /*case R.id.nav_reg:
-                startActivity(new Intent(getApplicationContext(), Reg_users.class));
-                break;*/
             case R.id.nav_cart:
                 startActivity(new Intent(getApplicationContext(), CartActivity.class));
                 break;
             case R.id.nav_reg:
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                break;
+            case R.id.nav_signout:
+                mAuth.signOut();
+                hideMenu();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                break;
+            case R.id.nav_login:
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -119,6 +152,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Menu menu = navigationView.getMenu();
         if(mCurrentUser == null){
             menu.findItem(R.id.nav_profile).setVisible(false);
+            menu.findItem(R.id.nav_signout).setVisible(false);
+        }else{
+            menu.findItem(R.id.nav_reg).setVisible(false);
+            menu.findItem(R.id.nav_login).setVisible(false);
         }
     }
 }

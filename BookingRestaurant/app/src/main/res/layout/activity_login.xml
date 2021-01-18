@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/verify" />
 
     <EditText
-        android:id="@+id/edtNewPhone"
+        android:id="@+id/edtPhoneNumber"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -43,5 +43,17 @@
         android:text="Đăng Nhập"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
+
+    <TextView
+        android:id="@+id/tvFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/semibold"
+        android:textColor="#E63A3A"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

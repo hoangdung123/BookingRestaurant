@@ -71,7 +71,7 @@ public class RiceConfig {
 
         @Override
         public int getItemCount() {
-            return 0;
+            return listRice.size();
         }
     }
 }
